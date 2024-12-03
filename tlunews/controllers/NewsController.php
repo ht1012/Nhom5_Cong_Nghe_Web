@@ -15,4 +15,15 @@ class NewsController
         $newsList = $this->newsModel->getAllNews();
         require 'views/news/index.php';
     }
+
+    //Hien thi chi tiet tin tuc
+    public function detail($id)
+    {
+        $newsItem = $this->newsModel->getNewsById($id);
+        if ($newsItem) {
+            require 'views/news/detail.php';
+        } else {
+            echo "Tin tức không tồn tại!";
+        }
+    }
 }
