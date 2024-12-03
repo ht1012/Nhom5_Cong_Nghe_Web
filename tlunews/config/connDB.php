@@ -1,20 +1,19 @@
-<?php 
-class ConnDB {
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $dbname = "tlunews";
-    private $conn = null;
+<?php
+class connDB {
+    private static $conn = null;
 
-    public function __construct() {
-        $this->conn = new mysqli($this->servername, $this->username,$this->password, $this->dbname);
-        if (!$this->conn) {
-            die("Connect Fail". mysqli_connect_errno());
+    public static function getConnection() {
+        if (self::$conn === null) {
+            try {
+                self::$conn = new PDO('mysql:host=localhost;dbname=tlunews', 'root', '', [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Display errors
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Fetch associative array
+                ]);
+            } catch (PDOException $e) {
+                die("Connection failed: " . $e->getMessage());
+            }
         }
-    }
-    public function getConnection() {
-        return $this->conn;
+        return self::$conn;
     }
 }
-
 ?>
