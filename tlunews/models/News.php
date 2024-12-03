@@ -9,4 +9,10 @@ class News
     {
         $this->conn = $conn;
     }
+
+    //Hien thi danh sach tin tuc
+
+    public function index() {}
+    //Hien thi chi tiet tin tuc
+    public function detail($id) {}
 }
