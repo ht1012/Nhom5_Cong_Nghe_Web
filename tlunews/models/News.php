@@ -20,5 +20,22 @@ class News
         return $stmt->fetch();
     }
 
+    public static function add($title, $content, $image, $category_id) {
+        $db = connDB::getConnection();
+        $stmt = $db->prepare("INSERT INTO news (title, content, image, category_id) VALUES (?, ?, ?, ?)");
+        return $stmt->execute([$title, $content, $image, $category_id]);
+    }
+
+    public static function update($id, $title, $content, $image, $category_id) {
+        $db = connDB::getConnection();
+        $stmt = $db->prepare("UPDATE news SET title = ?, content = ?, image = ?, category_id = ? WHERE id = ?");
+        return $stmt->execute([$title, $content, $image, $category_id, $id]);
+    }
+
+    public static function delete($id) {
+        $db = connDB::getConnection();
+        $stmt = $db->prepare("DELETE FROM news WHERE id = ?");
+        return $stmt->execute([$id]);
+    }
 }
 ?>
