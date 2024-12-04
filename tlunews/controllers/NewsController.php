@@ -4,9 +4,9 @@ class NewsController
 {
     private $newsModel;
 
-    public function __construct($conn)
+    public function __construct()
     {
-        $this->newsModel = new News($conn);
+        $this->newsModel = new News();
     }
 
     //Hien thi danh sach tin tuc
