@@ -22,3 +22,19 @@ CREATE TABLE news (
     category_id INT,
     FOREIGN KEY (category_id) REFERENCES categories(id)
 );
+
+INSERT INTO categories (name) VALUES
+('Thời sự'),
+('Thể thao'),
+('Giải trí'),
+('Kinh tế'),
+('Công nghệ');
+INSERT INTO news (title, content, image, created_at, category_id) VALUES
+('Tin nóng hôm nay', 'Nội dung chi tiết của tin nóng hôm nay...', 'image1.jpg', NOW(), 1),
+('Đội tuyển bóng đá Việt Nam chiến thắng', 'Đội tuyển bóng đá Việt Nam vừa giành chiến thắng...', 'image2.jpg', NOW(), 2),
+('Phim bom tấn sắp ra mắt', 'Bộ phim bom tấn được mong chờ sẽ ra mắt tuần này...', 'image3.jpg', NOW(), 3),
+('Giá vàng giảm mạnh', 'Thị trường vàng hôm nay ghi nhận giá giảm mạnh...', 'image4.jpg', NOW(), 4),
+('Ứng dụng mới của AI', 'Công nghệ AI đang thay đổi cách chúng ta sống...', 'image5.jpg', NOW(), 5);
+INSERT INTO users (username, password, role) VALUES
+('admin1', 'admin1', 1), 
+('guest1', 'admin1', 0);
