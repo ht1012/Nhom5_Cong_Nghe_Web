@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BTVN 30/11</title>
+    <title>TH2 Nhóm 5</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -29,4 +29,16 @@
                 </li>
             </ul>
         </div>
+
+
+        <form method="GET" action="header.php">
+            <input type="hidden" name="controller" value="home">
+            <input type="hidden" name="action" value="search">
+            <div class="input-group">
+                <input type="text" class="form-control" name="keyword" placeholder="Nhập từ khóa tìm kiếm..." value="<?= $_GET['keyword'] ?? '' ?>">
+                <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+            </div>
+        </form>
+
+        <a style="margin-left: 10px;" href="index.php?controller=admin&action=logout" class="btn btn-danger">Đăng xuất</a>
     </nav>

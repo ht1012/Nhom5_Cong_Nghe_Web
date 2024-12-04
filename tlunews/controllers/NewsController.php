@@ -1,15 +1,29 @@
-
 <?php
 require_once 'models/News.php';
+class NewsController
+{
+    private $newsModel;
 
-class NewsController {
-    public function index() {
-        $news = News::getAllNews();
-        include 'views/news/index.php';
+    public function __construct($conn)
+    {
+        $this->newsModel = new News($conn);
     }
 
-    public function detail($id) {
-        $news = News::getNewsById($id);
-        include 'views/news/detail.php';
+    //Hien thi danh sach tin tuc
+    public function index()
+    {
+        $news = $this->newsModel->getAll();
+        require 'views/news/index.php';
+    }
+
+    //Hien thi chi tiet tin tuc
+    public function detail($id)
+    {
+        $newsItem = $this->newsModel->getById($id);
+        if ($newsItem) {
+            require 'views/news/detail.php';
+        } else {
+            echo "Tin tức không tồn tại!";
+        }
     }
 }
