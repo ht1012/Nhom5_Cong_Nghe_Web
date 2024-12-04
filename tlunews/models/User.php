@@ -7,8 +7,8 @@ class User{
         $stmt->execute([$username]);
         $user = $stmt->fetch();
 
-        if($user && $password === $user["password"]){
-            return true;
+        if($user && $password === $user['password']){
+            return $user;
         }
         return false;
     }

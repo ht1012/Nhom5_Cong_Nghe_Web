@@ -1,6 +1,6 @@
 <?php
 class connDB{
-    private $conn = null;
+    private static $conn = null;
     public static function getConnection()
     {
         if(self::$conn === null){
