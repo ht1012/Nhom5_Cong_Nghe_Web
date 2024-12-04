@@ -24,5 +24,12 @@ class AdminController{
         session_destroy();
         header('Location: index.php?controller=admin&action=login');
     }
-    
+
+    public function requireLogin(){
+        session_start();
+        if(!isset($_SESSION['user']) || $_SESSION['user']['role'] != 1){
+            header('Location: index.php?controller=admin&action=login');
+            exit;
+        }
+    }
 }
