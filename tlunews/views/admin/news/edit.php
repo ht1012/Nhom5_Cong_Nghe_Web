@@ -13,7 +13,7 @@
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Hình ảnh</label>
-            <input type="text" name="image" class="form-control" id="image" value="<?= $news['image'] ?>">
+            <input type="file" name="image" class="form-control" id="image" required>
         </div>
         <div class="mb-3">
             <label for="category_id" class="form-label">Danh mục</label>
