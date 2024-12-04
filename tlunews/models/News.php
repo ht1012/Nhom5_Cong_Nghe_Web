@@ -1,5 +1,5 @@
 <?php
-require_once 'config/connGB.php';
+require_once 'config/connDB.php';
 
 class News
 {
