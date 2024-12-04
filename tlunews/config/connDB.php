@@ -18,4 +18,4 @@ class connDB
         return self::$conn;
     }
 }
-?>
+
