@@ -1,5 +1,5 @@
 <?php
-require_once '../config/connDB.php';
+require_once 'config/connDB.php';
 
 class User {
     public static function authenticate($username, $password) {

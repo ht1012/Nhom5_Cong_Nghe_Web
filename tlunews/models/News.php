@@ -1,5 +1,5 @@
 <?php
-require_once '../config/ConnDB.php';
+require_once 'config/connDB.php';
 class News
 {
     public static function getAllNews() {
