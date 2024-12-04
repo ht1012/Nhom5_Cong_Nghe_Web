@@ -1,29 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once 'views/layouts/header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách tin tức</title>
-
-</head>
-
-<body>
-    <h1>Danh sách tin tức</h1>
-
+<div class="container mt-5">
+    <h2>Danh sách tin tức</h2>
     <div class="row">
         <?php foreach ($news as $item): ?>
-        <div class="col-md-4">
-            <div class="card">
-                <img src="<?= $item['image'] ?>" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $item['title'] ?></h5>
-                    <a href="index.php?action=detail&id=<?= $item['id'] ?>" class="btn btn-primary">Xem chi tiết</a>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="assets/images/<?= $item['image'] ?>" class="card-img-top" alt="<?= $item['title'] ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $item['title'] ?></h5>
+                        <a href="index.php?controller=home&action=detail&id=<?= $item['id'] ?>" class="btn btn-primary">Xem chi tiết</a>
+                    </div>
                 </div>
             </div>
-        </div>
         <?php endforeach; ?>
     </div>
-</body>
+</div>
 
-</html>
+<?php require_once 'views/layouts/footer.php'; ?>

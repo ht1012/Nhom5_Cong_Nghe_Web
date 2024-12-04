@@ -1,19 +1,13 @@
 <?php
-
-require_once 'config/connDB.php';
-require_once 'controllers/NewsController.php';
-
-$newsController = new NewsController(connDB::getConnection());
+$controller = $_GET['controller'] ?? 'home';
 $action = $_GET['action'] ?? 'index';
 
-switch ($action) {
-    case 'detail':
-        $id = $_GET['id'] ?? null;
-        $newsController->detail($id);
-        break;
+$controllerClass = ucfirst($controller) . 'Controller';
+require_once "controllers/$controllerClass.php";
 
-    case 'index':
-    default:
-        $newsController->index();
-        break;
+$instance = new $controllerClass();
+if (method_exists($instance, $action)) {
+    $instance->$action($_GET['id'] ?? null);
+} else {
+    echo "Action không tồn tại.";
 }

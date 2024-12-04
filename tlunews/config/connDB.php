@@ -1,10 +1,17 @@
 <?php
+<<<<<<< HEAD
 class connDB
 {
     private static $conn = null;
 
     public static function getConnection()
     {
+=======
+class connDB {
+    private static $conn = null;
+
+    public static function getConnection() {
+>>>>>>> crud_admin
         if (self::$conn === null) {
             try {
                 self::$conn = new PDO('mysql:host=localhost;dbname=tlunews', 'root', '', [
@@ -18,3 +25,7 @@ class connDB
         return self::$conn;
     }
 }
+<<<<<<< HEAD
+=======
+?>
+>>>>>>> crud_admin
