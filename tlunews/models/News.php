@@ -7,18 +7,22 @@ class News
     public static function getAll()
     {
         $db = connDB::getConnection();
-        $stmt = $db->query("SELECT * FROM news");
-        return $stmt->fetchAll();
+        $stmt = $db->prepare("SELECT n.*, c.name AS category_name 
+                          FROM news n
+                          LEFT JOIN categories c ON n.category_id = c.id");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);  // Trả về mảng các tin tức
     }
+
 
     public static function getById($id)
     {
         $db = connDB::getConnection();
-        $stmt = $db->prepare("SELECT news.*, categories.name
-        FROM news
-        LEFT JOIN categories ON news.category_id = categories.id
-        WHERE news.id = ?");
-        $stmt->execute([$id]);
-        return $stmt->fetch();
+        $stmt = $db->prepare("SELECT n.*, c.name AS category_name 
+                              FROM news n
+                              LEFT JOIN categories c ON n.category_id = c.id
+                              WHERE n.id = :id");
+        $stmt->execute(['id' => $id]); // Truy vấn với tham số $id
+        return $stmt->fetch(PDO::FETCH_ASSOC); // Trả về bản ghi đầu tiên
     }
 }
