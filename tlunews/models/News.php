@@ -14,7 +14,10 @@ class News
     public static function getById($id)
     {
         $db = connDB::getConnection();
-        $stmt = $db->prepare("SELECT * FROM news WHERE id = ?");
+        $stmt = $db->prepare("SELECT news.*, categories.category_name
+        FROM news
+        LEFT JOIN categories ON news.category_id = categories.id
+        WHERE news.id = ?");
         $stmt->execute([$id]);
         return $stmt->fetch();
     }
