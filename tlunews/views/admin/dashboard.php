@@ -1,4 +1,3 @@
-<a href="index.php?controller=admin&action=logout" class="btn btn-danger">Đăng xuất</a>
 <?php require_once 'views/layouts/header.php'; ?> 
 
 <div class="container mt-5">
