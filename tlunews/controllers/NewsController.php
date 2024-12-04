@@ -12,6 +12,4 @@ class NewsController {
         $news = News::getNewsById($id);
         include 'views/news/detail.php';
     }
-
-    
 }
