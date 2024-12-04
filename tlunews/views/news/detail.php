@@ -8,9 +8,10 @@
 </head>
 
 <body>
-    <h1><?= htmlspecialchars($newsItem['category_name']) ?></h1>
+    <h1><?= htmlspecialchars($newsItem['title']) ?></h1>
+    <p><?= htmlspecialchars($newsItem['content']) ?></p>
+    <p>Danh mục: <?= htmlspecialchars($newsItem['category_name'] ?? 'Không rõ') ?></p>
     <img src="<?= htmlspecialchars($newsItem['image']) ?>" alt="<?= htmlspecialchars($newsItem['title']) ?>" />
-    <p><?= nl2br(htmlspecialchars($newsItem['content'])) ?></p>
     <a href="index.php?action=index">Trở lại danh sách</a>
 </body>
 
