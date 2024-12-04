@@ -20,5 +20,9 @@ class AdminController{
     }
 
     public function logout(){
-        
+        session_start();
+        session_destroy();
+        header('Location: index.php?controller=admin&action=login');
+    }
+    
 }
