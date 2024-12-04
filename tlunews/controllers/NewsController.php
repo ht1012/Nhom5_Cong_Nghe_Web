@@ -12,7 +12,7 @@ class NewsController
     //Hien thi danh sach tin tuc
     public function index()
     {
-        $newsList = $this->newsModel->getAllNews();
+        $news = $this->newsModel->getAllNews();
         require 'views/news/index.php';
     }
 
