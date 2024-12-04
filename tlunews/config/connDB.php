@@ -3,7 +3,7 @@ class connDB{
     private $conn = null;
     public static function getConnection()
     {
-        if(self::$conn == null){
+        if(self::$conn === null){
             try{
                 self::$conn = new PDO('mysql:host = localhost; dbname = tlunews','root','',[
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
