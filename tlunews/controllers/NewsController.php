@@ -12,14 +12,14 @@ class NewsController
     //Hien thi danh sach tin tuc
     public function index()
     {
-        $news = $this->newsModel->getAllNews();
+        $news = $this->newsModel->getAll();
         require 'views/news/index.php';
     }
 
     //Hien thi chi tiet tin tuc
     public function detail($id)
     {
-        $newsItem = $this->newsModel->getNewsById($id);
+        $newsItem = $this->newsModel->getById($id);
         if ($newsItem) {
             require 'views/news/detail.php';
         } else {
