@@ -1,35 +1,22 @@
 <?php
-require_once 'config.php';
+require_once 'config/connDB.php';
 
 class News
 {
-    private $conn;
-
-    public function __construct($conn)
-    {
-        $this->conn = $conn;
-    }
 
     //Lay tat ca tin tuc
-    public function getAllNews()
+    public static function getAllNews()
     {
-        $stmt = $this->conn->prepare("SELECT news.*, categories.name
-        AS category_name FROM news 
-        JOIN categories ON news.category_id = categories.id");
-
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $db = connDB::getConnection();
+        $stmt = $db->query("SELECT * FROM news");
+        return $stmt->fetchAll();
     }
 
-    //Lay tin tuc theo id
-    public function getNewsById($id)
+    public static function getNewsById($id)
     {
-        $stmt = $this->conn->prepare("SELECT news.*, categories.name
-        AS category_name FROM news 
-        JOIN categories ON news.category_id = categories.id
-        WHERE news.id = ?");
-
+        $db = connDB::getConnection();
+        $stmt = $db->prepare("SELECT * FROM news WHERE id = ?");
         $stmt->execute([$id]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch();
     }
 }
